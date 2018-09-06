@@ -22,6 +22,16 @@ const baseConfig = {
     rules: [
       {
         test: /\.js$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src')],
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: true
+        }
+      },
+      {
+        test: /\.js$/,
         include: [resolve('src')],
         // 这里不能使用 babel-preset-react
         use: [{ loader: 'babel-loader' }]
@@ -34,7 +44,7 @@ const baseConfig = {
         test: /\.less$/,
         use: [{
           loader: 'style-loader'}, {
-          loader: 'css-loader'}, {
+          loader: 'css-loader?modules'}, {
           loader: 'less-loader'
         }],
        }
