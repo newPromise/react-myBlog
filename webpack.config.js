@@ -51,6 +51,7 @@ const baseConfig = {
     ]
   },
   plugins: [
+    // use this to auto inject bundled js to index.html
     new HtmlWebPackPlugin({
         template: './index.html',
         filename: 'index.html',

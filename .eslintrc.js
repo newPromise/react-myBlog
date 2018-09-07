@@ -8,7 +8,7 @@ module.exports = {
     },
     extends: [
       // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-      'standard'
+      'react-app'
     ],
     // required to lint *.vue files
     // add your custom rules here
