@@ -17,7 +17,7 @@ const devServer = {
     host: config.dev.host,
     port: config.dev.port,
     open: config.dev.autoOpenBrowser,
-    overlay: { warnings: true, errors: true },
+    overlay: { warnings: false, errors: true },
     // overlay: config.dev.errorOverlay
     //   ? { warnings: false, errors: true }
     //   : false,

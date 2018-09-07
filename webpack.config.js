@@ -18,6 +18,7 @@ const baseConfig = {
     filename: 'bundle.js',
     path: path.resolve('./outputs')
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -57,8 +58,9 @@ const baseConfig = {
         filename: 'index.html',
         inject: true
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
     // new CleanWebpackPlugin(['outputs'])
+    new webpack.SourceMapDevToolPlugin({})
   ]
 };
 
