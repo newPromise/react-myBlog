@@ -8,7 +8,8 @@ class DatePicker extends Component {
         this.selectDate = this.selectDate.bind(this);
         this.initDateDatas = this.initDateDatas.bind(this);
         this.state = {
-            activeIndex: 0,
+            date: "",
+            activeIndex: "",
             dateDatas: [],
             dateYear: "",
             dateMonth: "",
@@ -21,7 +22,13 @@ class DatePicker extends Component {
         if (cellDisabled) {
             return;
         }
+        const addSuffix = val => val < 10 ? `0${val}`: val;
         this.setState({ activeIndex: tdIndex });
+        this.props.onChange(`${this.state.dateYear}-${addSuffix(this.state.dateMonth)}-${addSuffix(this.state.dateDatas[tdIndex])}`);
+    }
+    toggleMon(toggleTag) {
+        this.initDateDatas(dateUtil(this.state.date).getAfterMon((toggleTag === "last" ? -1 : 1)).$date);
+        this.setState({ activeIndex: "" });
     }
     componentDidMount() {
         this.initDateDatas(this.props.date);
@@ -36,7 +43,7 @@ class DatePicker extends Component {
             weekDay = 7;
         }
         const monthDayNum = dateUtil(date).getDays();
-        const lastMonthDays = dateUtil(date, -1).getDays();
+        const lastMonthDays = dateUtil(date).getAfterMon(-1).getDays();
         for (let dayIndex = 0; dayIndex < dateDatas.length; dayIndex ++) {
             if (dayIndex + 1 >= weekDay && ((dayIndex + 1) < (monthDayNum + weekDay))) {
                 dateDatas[dayIndex] = dayIndex + 2 - weekDay;
@@ -48,16 +55,16 @@ class DatePicker extends Component {
                 dateDatas[dayIndex] = dayIndex - monthDayNum - weekDay + 2;
             }
         }
-        this.setState({ dateDatas, dateYear: year, dateMonth: month, dateDay, weekDay, monthDays: monthDayNum });
+        this.setState({ dateDatas, dateYear: year, date, dateMonth: month, dateDay, weekDay, monthDays: monthDayNum });
     }
     render() {
         const DateHeader = () => {
             return (
                 <div className= { style["blog-date-header"] }>
                     <div className = { style["blog-header-inner"] }>
-                        <a className = { style["date-pev-btn"] }>日期</a>
-                        <span className = { style["header-date-text"] }>{ `${this.state.dateYear}年${this.state.dateMonth}月${this.state.dateDay}日` }</span>
-                        <a className = { style["date-next-btn"] }>日期</a>
+                        <a className = { style["date-pev-btn"] } onClick={ this.toggleMon.bind(this, "last")  }>上一月</a>
+                        <span className = { style["header-date-text"] }>{ `${this.state.dateYear}年${this.state.dateMonth}月` }</span>
+                        <a className = { style["date-next-btn"] } onClick={ this.toggleMon.bind(this, "next")  }>下一月</a>
                     </div>
                 </div>
             );
