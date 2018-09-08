@@ -1,0 +1,49 @@
+.blog-button {
+    display: inline-block;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    background: none;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    outline: 0;
+    cursor: pointer;
+}
+
+.small {
+    padding: 0 7px;
+    height: 24px;
+    line-height: 24px;
+}
+.default {
+    padding: 0 15px;
+    height: 32px;
+    line-height: 32px;
+}
+.large {
+    height: 40px;
+    font-size: 16px;
+    padding: 0 15px;
+}
+
+.primary {
+    color: #fff;
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+}
+
+.text {
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+.blog-button-small-text {
+    composes: blog-button small text;
+    &:hover {
+        color: #8590a6;
+    }
+}
+.blog-button-small-primary {
+    composes: blog-button small primary;
+}
