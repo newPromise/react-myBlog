@@ -38,6 +38,22 @@ const baseConfig = {
         use: [{ loader: 'babel-loader' }]
       },
       {
+        test: /\.(eot|svg|ttf|woff|woff2)\w*/,// font awesome loader
+        loader: 'file-loader',
+        exclude: [/\.html$/, /\.(js|jsx)$/, /\.less$/, /\.css$/, /\.json$/, /\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/]
+      },
+      {
+        test: /\.css$/,
+        loader: "css-loader",
+        options: {
+          modules: true
+        }
+      },
+      {
+        test: /\.(gif|png|jpg|woff|svg|ttf|eot)\??.*$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.jsx$/,
         use: [{loader: "babel-loader"}, { loader: "babel-preset-es2015" }, { loader: "babel-preset-react" }]
       },
