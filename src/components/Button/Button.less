@@ -11,20 +11,37 @@
     cursor: pointer;
 }
 
+@btnSize: 24px;
+@smallSize: 24px;
+@defaultSize: 32px;
+@largeSize: 40px;
+
+
+.lineHeight(@height, @border, @isText: false) {
+    height: @height;
+    & when(@isText) {
+        line-height: (@height);
+    }
+    & when(@isText = false) {
+        line-height: (@height - 2 * @border);
+    }
+}
+
 .small {
     padding: 0 7px;
-    height: 24px;
-    line-height: 24px;
+    @btnSize: @smallSize;
+    .lineHeight(@smallSize, 1px);
 }
 .default {
+    @btnSize: @defaultSize;
     padding: 0 15px;
-    height: 32px;
-    line-height: 32px;
+    .lineHeight(@defaultSize, 1px);
 }
 .large {
-    height: 40px;
+    @btnSize: @largeSize;
     font-size: 16px;
     padding: 0 15px;
+    .lineHeight(@largeSize, 1px);
 }
 
 .primary {
@@ -37,6 +54,7 @@
     border: none;
     padding: 0;
     background: transparent;
+    .lineHeight(@btnSize, 1px, true)
 }
 .blog-button-small-text {
     composes: blog-button small text;
