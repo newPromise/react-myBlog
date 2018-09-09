@@ -43,10 +43,19 @@ const baseConfig = {
       },
       {
         test: /\.less$/,
-        use: [{
-          loader: 'style-loader'}, {
-          loader: 'css-loader?modules'}, {
-          loader: 'less-loader'
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          { 
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]--[hash:base64:5]'
+            }
+          }, 
+          {
+            loader: 'less-loader'
         }],
        }
     ]
