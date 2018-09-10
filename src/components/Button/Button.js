@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import style from "./Button.less";
 import * as PropTypes from 'prop-types';
+import Icon from "../Icon/Icon.js";
 
 
 class Button extends Component{
@@ -22,14 +23,11 @@ class Button extends Component{
         style: PropTypes.object
     }
     render() {
-        const { text } = this.props;
         const { prefixCls } = this.state;
-        const Button= (text, ...props) => {
-                const { type, size, btnStyle, onClick } = props[0];
-                return <button style={ btnStyle } className = { style[`${prefixCls}-${size}-${type}`] } onClick={ onClick }>{ text }</button>
-
+        const Button= ({ type, size, btnStyle, onClick }, ...props) => {
+                return <button style={ btnStyle } className = { style[`${prefixCls}-${size}-${type}`] } onClick={ onClick }><Icon type="like" theme="fill" color="yellow"/><span>我是文章</span></button>
         };
-        return Button(text, this.props);
+        return Button(this.props);
     }
 }
 
