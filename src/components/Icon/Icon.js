@@ -32,7 +32,7 @@ class Icon extends Component {
                 style.fill = color;
             }
             return (
-                <i className= { "iconfont" } style={{ fontSize, color: "transparent" }}>
+                <i className= { "iconfont" } style={{ fontSize }}>
                     <svg className= { `icon ${ className ? className : "" }` } aria-hidden="true" style = { style }  strokeWidth="100">
                         <use xlinkHref= { `#icon-${type}` } ></use>           
                     </svg>

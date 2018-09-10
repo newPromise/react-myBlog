@@ -1,11 +1,12 @@
+@defaultSize: 32px;
+
+
 .blog-input {
     width: 320px;
-    padding-left: 15px;
     border: 1px solid #ebebeb;
-    height: 34px;
-    border-radius: 3px;
+    border-radius: 4px;
     font-size: 14px;
-    padding: 4px 10px;
+    overflow: hidden;
 }
 .input-focus {
     composes: blog-input;
@@ -16,14 +17,24 @@
     composes: blog-input;
     background: #f6f6f6;
 }
-.input-bar {
-    height: 24px;
-    input {
-        width: 100%;
-        height: 24px;
-        line-height: 24px;
-        background: transparent;
+.input-wrapper {
+    position: relative;
+    display: table;
+    .input-after, .input-before {
+        display: table-cell;
+        padding: 4px 11px;
+        width: 1px;
+        background: #f5f7fa;
+        color: #909399;
+        vertical-align: middle;
+        white-space: nowrap;        
     }
 }
-.input-after{
+.input-bar {
+    input {
+        width: 100%;
+        height: @defaultSize;
+        padding: 4px 11px;
+        background: transparent;
+    }
 }
