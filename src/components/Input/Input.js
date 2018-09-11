@@ -16,21 +16,31 @@ class Input extends Component {
     }
     static propTypes = {
         addBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        addAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+        addAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        type: PropTypes.oneOf(["text", "search"]),
+        placeholder: PropTypes.string
     }
     static defaultProps = {
         addAfter: null,
-        addAfter: null
+        addBefore: null,
+        type: "text",
+        placeholder: ""
     }
     render () {
-        const { addBefore, addAfter } = this.props;
+        const { addBefore, addAfter, placeholder, type } = this.props;
         return (
             <div className= { `${style["input-wrapper"]} ${this.state.hasFocus ? style["input-focus"] : style["input-nonFocus"]}` }>
                 { addBefore ? <div className={ style["input-before"] }>{ addBefore }</div> : null}
-                <div className={ style["input-bar"] }>
-                    <input type="text" maxLength="50" autoComplete="false" placeholder="fsf"  onFocus={ this.focusSearchInput.bind(this, true) } onBlur={ this.focusSearchInput.bind(this, false) }/>
+                <div className={ `${style["input-bar"]} ${addBefore && style["input-hasBefore"]} ${addAfter && style["input-hasAfter"]}` }>
+                     <input 
+                        type="text"
+                        maxLength="50"
+                        autoComplete="false"
+                        placeholder= { placeholder } 
+                        onFocus={ this.focusSearchInput.bind(this, true) }
+                        onBlur={ this.focusSearchInput.bind(this, false) }/>
                 </div>
-                { addAfter ? <div className={ style["input-after"] }>{ addAfter }</div> : null }
+                { addAfter ? <div className={ `${style["input-after"]} ${(type === "search" ? style["input-search"] : "")}` }>{ addAfter }</div> : null }
             </div>
         )
     }
