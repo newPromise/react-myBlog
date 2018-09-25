@@ -1,0 +1,45 @@
+
+.typeStyle(@type) when(@type = "success") {
+    color: #fff;
+    background-color: #19be6b;
+}
+.typeStyle(@type) when(@type = "warning") {
+    color: #fff;
+    background-color: #f90;
+}
+.typeStyle(@type) when(@type = "error") {
+    color: #fff;
+    background-color: #ed4014;
+}
+
+.typeStyle(@type) when(@type = "default") {
+    color: rgb(0, 132, 255);
+    background: rgba(0,132,255,.1);
+}
+
+.blog-tag {
+    display: inline-block;
+    line-height: 2;
+    font-size: 12px;
+    padding: 0 14px;
+    background: red;
+    border-radius: 4px 4px;
+    cursor: pointer;
+    &-type {
+        &--success {
+            .typeStyle("success");
+        }
+        &--warning {
+            .typeStyle("warning");
+        }
+        &--error {
+            .typeStyle("error")
+        }
+        &--default {
+            .typeStyle("default")
+        }
+    }
+    &:hover {
+        opacity: .8;
+    }
+}
