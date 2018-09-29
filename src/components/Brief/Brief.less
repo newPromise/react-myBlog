@@ -1,0 +1,46 @@
+.blog-brief-wrapper {
+    .blog-brief-content {
+        position: relative;
+        width: 376px;
+        .blog-brief-avatar {
+            display: inline-block;
+            margin-top: -32px;
+            float: left;
+        }
+        .blog-brief-top {
+            @height: 40px;
+            line-height: @height;
+        }
+        .blog-brief-title {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .blog-brief-text {
+            margin: 10px 0;
+            border-bottom: 1px solid #f6f6f6;
+            border-top: 1px solid #f6f6f6;
+            line-height: 1.5;
+        }
+        .blog-brief-bottom {
+            text-align: center;
+            .blog-brief-questionCount {
+                display: inline-block;
+                cursor: pointer;
+                &:hover {
+                    div {
+                        color: #175199;
+                    }
+                }
+                .question-count {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                }
+                .question-tag {
+                    font-size: 14px;
+                    color: #8590a6;
+                }
+            }
+        }
+    }
+}
