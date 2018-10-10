@@ -1,8 +1,14 @@
 import React , { Component } from "react";
 import style from "./Header.less";
 import Input from "../Input/Input.js";
+import Icon from "../Icon/Icon.js";
+import Search from "../Input/InputSearch";
+// eslint-disable-next-line
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
         <header className={ style["blog-header"] }>
@@ -13,7 +19,7 @@ class Header extends Component {
                     <a className= { style["header-tags-link"] }>标签</a>
                     <a className = { style["header-all-link"] }>归档</a>
                 </nav>
-                <Input type="search"/>
+                <Search type="search" addAfter={ <Icon type="like"/> }/>
             </div>
         </header>)
     }
