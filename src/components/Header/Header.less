@@ -6,15 +6,36 @@
     overflow: hidden;
     background: #fff;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    z-index: 10000;
+    height: 52px;
 }
 .header-inner {
-    position: relative;
+    position: absolute;
     display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 100%;
+    transition: top .3s ease;
+}
+.header-wrapper {
+    position: relative;
+    margin: 0 auto;
     width: 1000px;
     height: 52px;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0 16px;
+}
+.header-main-inner {
+    top: 0;
+    composes: header-inner
+}
+.header-second-inner {
+    top: 52px;
+    composes: header-inner;
+}
+.header-main-bar {
+    top: -52px;
+}
+.header-second-bar {
+    top: 0px;
 }
 .header-link {
     padding: 0 15px;
