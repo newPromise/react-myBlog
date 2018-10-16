@@ -15,21 +15,23 @@ class Input extends Component {
         });
     }
     static propTypes = {
-        addBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        addAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        addBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+        addAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
         type: PropTypes.oneOf(["text", "search"]),
-        placeholder: PropTypes.string
+        placeholder: PropTypes.string,
+        width: PropTypes.string
     }
     static defaultProps = {
         addAfter: null,
         addBefore: null,
         type: "text",
-        placeholder: ""
+        placeholder: "",
+        width: "400px"
     }
     render () {
-        const { addBefore, addAfter, placeholder, type } = this.props;
+        const { addBefore, addAfter, placeholder, type, width } = this.props;
         return (
-            <div className= { `${style["input-wrapper"]} ${this.state.hasFocus ? style["input-focus"] : style["input-nonFocus"]}` }>
+            <div className= { `${style["input-wrapper"]} ${this.state.hasFocus ? style["input-focus"] : style["input-nonFocus"]}` } style={{ width }}>
                 { addBefore ? <div className={ style["input-before"] }>{ addBefore }</div> : null}
                 <div className={ `${style["input-bar"]} ${addBefore && style["input-hasBefore"]} ${addAfter && style["input-hasAfter"]}` }>
                      <input 
