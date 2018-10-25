@@ -1,0 +1,17 @@
+.article-rank {
+    &-link {
+        display: inline-block; // transform 只对 block 获取 inline-block 的元素起作用
+        transition: transform .3s ease-in-out;
+        &:hover {
+            color: black;
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+    }
+    &-head {
+        padding: 15px 12px;
+        color: #8590a6;
+        border-bottom: 1px solid #8590a680;
+        border-bottom-style: dashed; 
+    }
+}
