@@ -2,7 +2,7 @@
 const config = {
     dev: {
         host: "localhost",
-        port: "8888",
+        port: "8812",
         autoOpenBrowser: true,
         assetsPublicPath: "/"
     }

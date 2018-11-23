@@ -1,0 +1,3 @@
+function posDom(target, dom) {
+    
+}

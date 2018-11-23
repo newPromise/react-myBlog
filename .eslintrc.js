@@ -3,6 +3,12 @@ module.exports = {
     parserOptions: {
       parser: 'babel-eslint'
     },
+    // to fix error in eslint-plugin-react
+    "settings": {
+      "react": {
+        "version": "16.4.2"
+      },
+    },
     env: {
       browser: true,
     },

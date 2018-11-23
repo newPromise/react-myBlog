@@ -11,23 +11,21 @@ class Item extends Component {
         text: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
         hasCloseBtn: PropTypes.bool,
         extra: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-        itemIcon: PropTypes.element
+        prefix: PropTypes.element
     }
     static defaultProps = {
         text: "",
         hasCloseBtn: false,
         extra: "",
-        itemIcon: <Icon/>
+        prefix: <Icon/>
     }
     render () {
-        const ItemRender = ({ text, hasCloseBtn, extra, itemIcon }) => {
+        const ItemRender = ({ text, hasCloseBtn, extra, prefix }) => {
             return (
                 <div className={ style["blog-item-wrapper"] }>
                     <div className={ style["blog-item-content"] }>
                         <div className={ style["blog-item-icon"] }>
-                            <span>
-                                { itemIcon }
-                            </span>
+                           { prefix }
                         </div>
                         <div className= { style["blog-item-main"] }>
                             <div className={ style["blog-item-title"] }>{ text }</div>

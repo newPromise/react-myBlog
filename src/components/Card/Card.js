@@ -26,12 +26,15 @@ class Card extends Component {
         return (
             <div className= { style["blog-card-wrapper"] }>
                 <div className= { style["blog-card-content"] }>
-                    <div className={ style["blog-article-resource"] }>热门内容来自 { articleResource }</div>
+                    <div className={ style["blog-article-resource"] }>内容来自于 { articleResource }</div>
                     <div className= { style["blog-article"] }>
                         <div className={ style["blog-article-title"] }>{ articleTitle }</div>
-                        <div className={ style["blog-like-count"] }>{ articleVoterCount } 人觉得很赞</div>
+                        <div className={ style["blog-like-count"] }>{ articleVoterCount } 人喜欢这篇文章</div>
                         {/* use dangeroutslySetInnerHtML to set innerHTML */}
-                        <div className={ style["blog-article-content"] } dangerouslySetInnerHTML={{ __html: articleContent }}></div>
+                        <div className={ style["blog-article-content"] }>
+                            <div className={ style["blog-article-preImg"] }><img src="https://pic2.zhimg.com/80/v2-f380cb023c706812fb34b52d6c3d1b1a_r.jpg" alt="cover"/></div>
+                            <div className={ style["blog-article-description"] } dangerouslySetInnerHTML={{ __html: articleContent }}></div>
+                        </div>
                         <div className={ style["article-publish-time"] }>发布于 { articleTime }</div>
                     </div>
                    

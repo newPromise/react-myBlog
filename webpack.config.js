@@ -16,7 +16,9 @@ const baseConfig = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve('./outputs')
+    path: path.resolve('./outputs'),
+    // 添加公共路径 "/"
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
   module: {
@@ -44,10 +46,14 @@ const baseConfig = {
       },
       {
         test: /\.css$/,
-        loader: "css-loader",
-        options: {
-          modules: true
-        }
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader",
+          options: {
+            modules: false
+          }
+        }]
       },
       {
         test: /\.(gif|png|jpg|woff|svg|ttf|eot)\??.*$/,

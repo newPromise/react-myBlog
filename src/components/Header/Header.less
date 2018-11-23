@@ -2,8 +2,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     overflow: hidden;
+    z-index: 1000;
+    width: 100%;
     background: #fff;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
     z-index: 10000;
@@ -12,8 +13,8 @@
 .header-inner {
     position: absolute;
     display: flex;
+    font-size: 15px;
     align-items: center;
-    padding: 0 16px;
     height: 100%;
     transition: top .3s ease;
 }
@@ -30,6 +31,12 @@
 .header-second-inner {
     top: 52px;
     composes: header-inner;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 20px;
+    color: black;
+    .header-right {
+    }
 }
 .header-main-bar {
     top: -52px;
@@ -39,7 +46,6 @@
 }
 .header-link {
     padding: 0 15px;
-    font-size: 15px;
     line-height: 30px;
     color: #8590a6;
     &:hover {

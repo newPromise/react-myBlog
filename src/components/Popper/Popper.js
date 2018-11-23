@@ -20,18 +20,8 @@ class Popper extends Component {
     static defaultProps = {
         offset: "0px, 40px"
     }
-    togglePopperShow(showPopper) {
-        if (!showPopper) {
-            const timer = setTimeout(() => {
-                this.setState({ showPopper });
-            }, 500);
-            this.setState({ popperTimer: timer });
-        } else {
-            if (this.state.popperTimer) {
-                clearTimeout(this.state.popperTimer);
-            }
-            this.setState({ showPopper });
-        }
+    togglePopperShow(visiable) {
+        this.setState({ showPopper: visiable });
     }
     componentDidUpdate() {
         new BasePopper(this.refs.referEl, this.refs.popper, {
@@ -44,11 +34,11 @@ class Popper extends Component {
         });
     }
     render() {
-        const { children, content } = this.props;
+        const { children, content, visiable } = this.props;
         return (
            <div className={ style["blog-popper"] }>
-               <span ref="referEl" className={ style["blog-popper-referel"] } onMouseEnter={ this.togglePopperShow.bind(this, true)} onMouseLeave={ this.togglePopperShow.bind(this, false) }>{ children }</span>
-               <div ref="popper" style={{ display: this.state.showPopper ? "block" : "none" }} className={ style["blog-popper-content"] }  onMouseEnter={ this.togglePopperShow.bind(this, true)}  onMouseLeave={ this.togglePopperShow.bind(this, false) }>{ content }</div>
+               <span ref="referEl" className={ style["blog-popper-referel"] } >{ children }</span>
+               <div ref="popper" style={{ display: (visiable || this.state.showPopper) ? "block" : "none" }} className={ style["blog-popper-content"] }  onMouseEnter={ this.togglePopperShow.bind(this, true)}  onMouseLeave={ this.togglePopperShow.bind(this, false) }>{ content }</div>
            </div>
         );
     }

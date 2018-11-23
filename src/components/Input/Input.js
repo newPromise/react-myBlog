@@ -6,7 +6,8 @@ class Input extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasFocus: false
+            hasFocus: false,
+            inputValue: ""
         };
     };
     focusSearchInput(isFocus) {
@@ -29,16 +30,18 @@ class Input extends Component {
         width: "400px"
     }
     render () {
-        const { addBefore, addAfter, placeholder, type, width } = this.props;
+        const { addBefore, addAfter, placeholder, type, width, whenChange, value } = this.props;
         return (
             <div className= { `${style["input-wrapper"]} ${this.state.hasFocus ? style["input-focus"] : style["input-nonFocus"]}` } style={{ width }}>
                 { addBefore ? <div className={ style["input-before"] }>{ addBefore }</div> : null}
                 <div className={ `${style["input-bar"]} ${addBefore && style["input-hasBefore"]} ${addAfter && style["input-hasAfter"]}` }>
                      <input 
+                        ref="input"
                         type="text"
                         maxLength="50"
                         autoComplete="false"
                         placeholder= { placeholder } 
+                        onChange= { () => { whenChange(this.refs.input.value) } }
                         onFocus={ this.focusSearchInput.bind(this, true) }
                         onBlur={ this.focusSearchInput.bind(this, false) }/>
                 </div>

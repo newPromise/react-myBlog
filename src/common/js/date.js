@@ -2,7 +2,6 @@ const REGEX_DATE = /^(\d{4})[\/ | -]?(\d{1,2})[\/ | -]?(\d{0,2})(.*?(\d{1,2}):(\
 // const REGEX_DATE_TWO = /^(\d{4})-?(\d{1,2})-?(\d{0,2})(.*?(\d{1,2}):(\d{1,2}):(\d{1,2}))?.?(\d{1,3})?$/;
 
 const dateParse = (date) => {
-    if (date === null) return new Date(NaN);
     if (date === void 0) return new Date();
     if (date instanceof Date) return date;
     if (typeof date === "string") {

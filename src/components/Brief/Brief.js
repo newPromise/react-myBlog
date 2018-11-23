@@ -5,15 +5,25 @@ import Popper from "../Popper/Popper";
 class Brief extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            popperVisiable: false
+        };
+        this.togglePopperShow = this.togglePopperShow.bind(this);
+    }
+    togglePopperShow(showPopper) {
+        setTimeout(() => {
+            this.setState({ popperVisiable: showPopper });
+        }, 500);
     }
     render() {
         const { children, briefConObj } = this.props;
+        const { popperVisiable } = this.state;
         const briefContent = (briefConObj) => {
             // 获取到简介的参数
             // 头像图片地址， 简介文字， 简介名称 问题个数
             const { avatar_url, brief_text, brief_title, question_count } = briefConObj;
             const AvatarImg = () => {
-                return <img className={ style["blog-brief-avatar"] } src={ avatar_url } alt="" width="72" height="72"/>
+                return <img className={ style["blog-brief-avatar"] } src="https://pic4.zhimg.com/v2-aa75dbfc6e01799538ebc49ab3503063_im.jpg" alt="" width="72" height="72"/>
             };
             const Title = () => {
                 return <div className= { style["blog-brief-title"] }><h4>{ brief_title }</h4></div>
@@ -44,8 +54,10 @@ class Brief extends Component {
             );
         };
         return (
-            <Popper content = { briefContent(briefConObj) }>
-                { children }
+            <Popper content = { briefContent(briefConObj) } visiable={ popperVisiable }>
+                <div className={ style["blog-brief-popper"] } onMouseEnter={ this.togglePopperShow.bind(this, true)} onMouseLeave={ this.togglePopperShow.bind(this, false) }>
+                    { children }
+                </div>
             </Popper>
         )
     }

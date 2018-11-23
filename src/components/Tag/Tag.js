@@ -24,7 +24,7 @@ class Tag extends Component {
                 if (color) colorCls = (style[`blog-tag-color--${color}`]);
                 return joinCls(cls, typeCls, colorCls);
             };
-            return <div className={ tagCls() } onClick={ onClick.bind(this, children) }>{ children }</div>;
+            return <div className={ tagCls() }>{ children }</div>;
         };
         return (
             baseTag()
