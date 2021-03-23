@@ -4,32 +4,32 @@ import composeCls from '../../common/js/classnames';
 import Button from '../../components/Button/Button';
 import Tag from '../../components/Tag/Tag';
 import Brief from '../../components/Brief/Brief';
+import { http } from '../../api/request';
 
 class Article extends Component {
   constructor (props) {
     super(props);
     this.state = {
       expand: false,
-      articleTitle: ''
+      articleTitle: '',
+      content: ''
     };
     this.toggleExpand = this.toggleExpand.bind(this);
   }
   toggleExpand () {
     this.setState({ expand: !this.state.expand });
   }
+  getDetail () {
+    http({ method: 'get', url: '/article/detail', params: { id: this.props.match.params.id } }).then((res) => {
+      this.setState({
+        content: res.data.content
+      })
+    })
+  }
   componentDidMount () {
-    console.log('did Height', document.body.offsetHeight);
   }
   componentWillMount () {
-    console.log('height', document.body.offsetHeight);
-    console.log('history 方法', this.props.history);
-    // this.props.history.push("/"); // 使用 push 方法进行跳转
-    // this.props.history.go(-1); // 回退
-    // this.props.history.go(1); // 前进
-    setTimeout(() => {
-      this.toggleExpand();
-    }, 1000);
-    console.log('数据得到的', this.props.match.params.id);
+    this.getDetail()
   }
   render () {
     const { expand, articleTitle } = this.state;
@@ -53,8 +53,7 @@ class Article extends Component {
                 <span>发表于</span>
               </div>
             </div>
-            <div className={style['blog-article-content']}>
-                            fds
+            <div className={[style['blog-article-content'], style['blog-text']].join(' ')} dangerouslySetInnerHTML={{ __html: this.state.content }}>
             </div>
             <div className={style['article-tags']}>
               <Brief briefConObj={{ avatar_url: '', brief_text: '',  brief_title: '',  question_count: '1'}} children={<Tag children="dfd"/>}/>
