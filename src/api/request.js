@@ -1,16 +1,29 @@
 // 放置所有的请求函数
 
-import sendRequest from './api.config';
-import api from './api.js';
-const testRes = async (params, data) => {
+import axios from 'axios';
+
+const axiosInstance = axios.create({});
+const baseUrl = 'http://localhost:8003'
+
+const sendRequest = (config, cb) => {
+  const { method, url, params } = config;
+  const fullUrl = `${baseUrl}${url}`
+  return axiosInstance(Object.assign({
+    method,
+    url: fullUrl
+  }, method === 'get' ? { params } : { data: params })).then((res) => cb ? cb(res.data) : res.data)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+const http = async (opts) => {
   try {
-    await sendRequest({method: 'post', url: 'sfd', data}, (res) => {
-      console.log('res', res);
-    })
+    return await sendRequest(opts)
   } catch (error) {
     console.log('error', error);
   }
 
 };
 
-export { testRes };
+export { http };
