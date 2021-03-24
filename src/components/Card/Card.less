@@ -17,6 +17,9 @@
             line-height: 1.6;
             color: #1a1a1a;
             margin-bottom: 4px;
+            &:hover {
+                color: #175199
+            }
         }
         .blog-like-count {
             margin-top: 8px;
@@ -50,8 +53,14 @@
                 width: 100%;
             }
         }
+
         &-description {
             flex: 1;
+            color: #121212;
+            transition: color .14s ease-out;
+            &:hover {
+              color: #646464
+            }
         }
     }
 }

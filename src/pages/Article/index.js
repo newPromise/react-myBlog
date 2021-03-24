@@ -11,7 +11,7 @@ class Article extends Component {
     super(props);
     this.state = {
       expand: false,
-      articleTitle: '',
+      title: '',
       content: ''
     };
     this.toggleExpand = this.toggleExpand.bind(this);
@@ -22,7 +22,8 @@ class Article extends Component {
   getDetail () {
     http({ method: 'get', url: '/article/detail', params: { id: this.props.match.params.id } }).then((res) => {
       this.setState({
-        content: res.data.content
+        content: res.data.content,
+        title: res.data.title
       })
     })
   }
@@ -32,21 +33,21 @@ class Article extends Component {
     this.getDetail()
   }
   render () {
-    const { expand, articleTitle } = this.state;
+    const { expand, title } = this.state;
     return (
       <div className={style['blog-article-wrapper']} style={{ paddingRight: `${expand ? '320px' : '0'}` }}>
         <div className={style['blog-article']}>
           <div className={style['blog-article-topbar']} style={{ paddingRight: `${expand ? '320px' : '0'}` }}>
             <div className={style['topbar-content']}>
               <div className={style['topbar-left']}>收藏于</div>
-              <div className={style['topbar-text']}>{articleTitle}</div>
+              {/* <div className={style['topbar-text']}>{title}</div> */}
               <div className={style['topbar-right']}><Button type="primary" size="default" text="全部文章"/></div>
             </div>
           </div>
           {/* <img className={ style["blog-article-img"] } src="https://pic2.zhimg.com/80/v2-f380cb023c706812fb34b52d6c3d1b1a_r.jpg"/> */}
           <div className={style['blog-article-container']}>
             <div >
-              <h1 className={style['blog-article-title']}>我是文章标题</h1>
+              <h1 className={style['blog-article-title']}>{title}</h1>
               <div className={style['blog-article-detail']}>
                 <span>发表于</span>
                 <span>分类于</span>

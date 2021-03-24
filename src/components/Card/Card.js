@@ -31,9 +31,7 @@ class Card extends Component {
               <div className={style['blog-article-title']}>{articleTitle}</div>
               {/* <div className={style['blog-like-count']}>{articleVoterCount} 人喜欢这篇文章</div> */}
               {/* use dangeroutslySetInnerHtML to set innerHTML */}
-              <div className={style['blog-article-content']}>
-                <div className={style['blog-article-description']} dangerouslySetInnerHTML={{ __html: description }}></div>
-              </div>
+              <div className={style['blog-article-description']} dangerouslySetInnerHTML={{ __html: description }}></div>
               <div className={style['article-publish-time']}>发布于 {articleTime}</div>
             </div>
 
