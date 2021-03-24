@@ -25,11 +25,11 @@ class Content extends Component {
         id,
         title: articleTitle,
         articleResource,
-        content: articleContent,
+        description,
         articleVoterCount,
         articleTime } = arc;
       return <Link key={index} to={'/article/' + id}>
-        <Card articleTitle={articleTitle} articleContent={articleContent} articleResource={articleResource} articleVoterCount={articleVoterCount} articleTime={articleTime}/>
+        <Card articleTitle={articleTitle} description={description} articleResource={articleResource} articleVoterCount={articleVoterCount} articleTime={articleTime}/>
       </Link>
     });
     return (
