@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import Tag from '../../components/Tag/Tag';
 import Brief from '../../components/Brief/Brief';
 import { http } from '../../api/request';
+import { hljs } from '../../const'
 
 class Article extends Component {
   constructor (props) {
@@ -27,7 +28,16 @@ class Article extends Component {
       })
     })
   }
-  componentDidMount () {
+  //  高亮代码显示
+  highLightCode () {
+    console.log('hljs', hljs)
+    document.querySelectorAll('pre code').forEach((block) => {
+      console.log('block', hljs)
+      hljs.highlightBlock(block)
+    })
+  }
+  componentDidUpdate () {
+    this.highLightCode()
   }
   componentWillMount () {
     this.getDetail()

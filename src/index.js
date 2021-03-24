@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import reactDom from 'react-dom';
 import './common/css/index.less';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import './const'
 import routes from './route';
 import './assets/font/reset.less';
-
 class App extends Component {
   render () {
     return (
